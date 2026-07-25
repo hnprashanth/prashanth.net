@@ -9,5 +9,38 @@
       " I learned that [låna pengar](www.låna-pengar.biz) means to borrow money there, and got robbed in Sweden on traveling excursion once, rather an useful quote if you are stuck in the same situation."
     ],
     "_why": "Injected SEO spam (Swedish payday-loan link) carried over from the old WordPress blog; removed at the author's request. The link also lacked a URL scheme, so it would have rendered as a broken relative link."
+  },
+
+  "_legacy_links": "The posts below self-linked to old WordPress permalinks on prashanth.net. Those URLs 404 on this site. Where the target still exists it is relinked to its local path; where the target was retired the link is unwrapped to plain text.",
+
+  "experiencing-professional-table-tennis-tournament-first-hand": {
+    "rewrite": [
+      [
+        "[even did a 200km ride!](https://prashanth.net/completing-my-first-200km-ride-on-a-bicycle-c9b0ed4c2780)",
+        "[even did a 200km ride!](/posts/completing-my-first-200km-ride-on-a-bicycle)"
+      ]
+    ]
+  },
+  "my-gunnar-roadie-probably-the-third-gunnar-in-india": {
+    "rewrite": [
+      [
+        "[riding since 5 months](http://prashanth.net/2016/07/got-hooked-cycling/)",
+        "[riding since 5 months](/posts/5-reasons-why-i-got-hooked-on-to-cycling)"
+      ]
+    ]
+  },
+  "my-zwift-setup-kinetic-road-machine-inride-wahoo-tickr-ipadmini2": {
+    "rewrite": [
+      [
+        "[Wahoo Tickr Heart Rate Monitor Review Using With Strava](http://prashanth.net/2016/07/wahoo-tickr-review-using-strava/)",
+        "[Wahoo Tickr Heart Rate Monitor Review Using With Strava](/posts/wahoo-tickr-heart-rate-monitor-review-using-with-strava)"
+      ]
+    ]
+  },
+  "integrating-keto-lchf-into-south-indian-vegetarian-diet": {
+    "rewrite": [
+      ["[great results](https://prashanth.net/2017/05/keto-triglycerides/)", "great results"]
+    ],
+    "_why": "Target (keto-triglycerides) was retired, so the link is unwrapped to plain text rather than relinked."
   }
 }

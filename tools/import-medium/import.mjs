@@ -187,6 +187,10 @@ async function main() {
       if (!body.includes(fragment)) throw new Error(`override for ${meta.slug}: fragment not found: ${fragment.slice(0, 60)}…`);
       body = body.replace(fragment, '');
     }
+    for (const [from, to] of overrides[meta.slug]?.rewrite ?? []) {
+      if (!body.includes(from)) throw new Error(`override for ${meta.slug}: rewrite source not found: ${from.slice(0, 60)}…`);
+      body = body.replaceAll(from, to);
+    }
     const md =
       [
         '---',

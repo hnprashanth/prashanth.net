@@ -6,7 +6,7 @@ slug: "integrating-keto-lchf-into-south-indian-vegetarian-diet"
 draft: false
 ---
 
-I have been on Keto for three weeks, it feels great and also getting [great results](https://prashanth.net/2017/05/keto-triglycerides/). Whenever I explain Keto or LCHF to someone, the question I often get asked is “How can you just live on vegetables and nuts!?”, “Don’t you get bored of eating same thing everyday?”..etc. So I thought it’s simpler to just jot down this blog and give reference to this instead of keep repeating myself all the time!
+I have been on Keto for three weeks, it feels great and also getting great results. Whenever I explain Keto or LCHF to someone, the question I often get asked is “How can you just live on vegetables and nuts!?”, “Don’t you get bored of eating same thing everyday?”..etc. So I thought it’s simpler to just jot down this blog and give reference to this instead of keep repeating myself all the time!
 
 When I started doing Keto, following were the challenges I faced:
 

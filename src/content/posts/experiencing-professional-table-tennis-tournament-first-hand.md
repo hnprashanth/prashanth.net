@@ -8,7 +8,7 @@ draft: false
 
 ![Me during my first knockout game. PC: Shreyas Kulkarni](../../assets/posts/experiencing-professional-table-tennis-tournament-first-hand/01-me-during-my-first-knockout-game-pc-shreyas-kulk-7ac89e86.jpg "Me during my first knockout game. PC: Shreyas Kulkarni")
 
-As a person, I find it difficult to stick to a fitness regime. I have tried yoga, running, cycling ([even did a 200km ride!](https://prashanth.net/completing-my-first-200km-ride-on-a-bicycle-c9b0ed4c2780)), swimming, strength training and probably more that I don’t remember anymore! Some of these things I still love and continue to get involved (maybe cycling & swimming). But none of these managed to become a habit!.
+As a person, I find it difficult to stick to a fitness regime. I have tried yoga, running, cycling ([even did a 200km ride!](/posts/completing-my-first-200km-ride-on-a-bicycle)), swimming, strength training and probably more that I don’t remember anymore! Some of these things I still love and continue to get involved (maybe cycling & swimming). But none of these managed to become a habit!.
 
 While I was thinking what interesting thing I should pickup next, it occured to me that there was one thing that stayed with for last 15 years, table tennis! I could never get bored playing it, calarie burn was just a side effect! Instead of picking up something new in my late 30s and probably suck at it, I thought why not improve on something I already know and love!
 

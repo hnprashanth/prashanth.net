@@ -167,6 +167,21 @@ for (const f of html) {
 }
 assert(external.size === 0, 'no third-party subresources', [...external].join('\n'));
 
+// Anchors pointing at our own absolute URL bypass the local-reference check
+// above, so a stale path (e.g. an old WordPress permalink) would 404 unnoticed.
+const selfAbsolute = [];
+for (const f of html) {
+  const src = await readFile(f, 'utf8');
+  for (const m of src.matchAll(/<a\b[^>]*href="(https?:\/\/(?:www\.)?prashanth\.net[^"]*)"/g)) {
+    selfAbsolute.push(`${path.relative(DIST, f)} -> ${m[1]}`);
+  }
+}
+assert(
+  selfAbsolute.length === 0,
+  'no anchors use our own absolute URL (they must be site-relative)',
+  selfAbsolute.join('\n'),
+);
+
 console.log('\nFeeds, metadata, deploy files\n');
 
 // --- feeds and metadata ----------------------------------------------------

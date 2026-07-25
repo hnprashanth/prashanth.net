@@ -18,7 +18,7 @@ I was initially looking for a smart trainer, but their availability in India is 
 
 Most Zwift users use their laptop and hook it to a big display/TV, which is something I tried the first time. But using living room TV whenever I desire wasn’t an option since my parents would be watching some or the other program. There was no space in room to accommodate trainer and use my display. I tried to use iPad, and it was actually pretty good. Having the screen right in front of me allowed me to have better readability/visibility and also intractability! Though a big display would give a better experience comparatively, it wasn’t much of a compromise with iPad.
 
-**Wahoo Tickr**: Read my full review here [Wahoo Tickr Heart Rate Monitor Review Using With Strava](http://prashanth.net/2016/07/wahoo-tickr-review-using-strava/)
+**Wahoo Tickr**: Read my full review here [Wahoo Tickr Heart Rate Monitor Review Using With Strava](/posts/wahoo-tickr-heart-rate-monitor-review-using-with-strava)
 
 **Video of my setup:**
 
