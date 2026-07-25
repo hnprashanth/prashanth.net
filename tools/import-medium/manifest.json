@@ -39,14 +39,6 @@
     "sha256": "ae6eaf73659d077d8ca605848b0f448cdb53fb15a9b1c3562d6144c110107ea6",
     "contentType": "image/jpeg"
   },
-  "1*W-qnkwBFN5_uo0mo-MPVXA.jpeg": {
-    "url": "https://cdn-images-1.medium.com/max/2000/1*W-qnkwBFN5_uo0mo-MPVXA.jpeg",
-    "localPath": "src/assets/posts/after-all-diets-failed-one-month-into-intermittent-fasting/01-image-1-e952fd9a.jpg",
-    "bytes": 58064,
-    "ext": "jpg",
-    "sha256": "11cabf63cb9e98be1334d69242f70a31c21961089f36c4d2aa2f3bb5004db9da",
-    "contentType": "image/jpeg"
-  },
   "0*nlyGzlvySz6aW0h7.jpg": {
     "url": "https://cdn-images-1.medium.com/max/2000/0*nlyGzlvySz6aW0h7.jpg",
     "localPath": "src/assets/posts/start-again/01-empty-street-492b3c42.jpg",
@@ -54,14 +46,6 @@
     "ext": "jpg",
     "sha256": "af63d775cbaecb8c955d8c960bf8159737be1d198286aca1c2bf8c2a5a451599",
     "contentType": "image/jpeg"
-  },
-  "0*d1n6pwpHIJAkegvg.png": {
-    "url": "https://cdn-images-1.medium.com/max/2000/0*d1n6pwpHIJAkegvg.png",
-    "localPath": "src/assets/posts/keto-triglycerides/01-cholesterol-levels-logged-67d806e4.png",
-    "bytes": 58688,
-    "ext": "png",
-    "sha256": "6566658dabab7beb152ea082b7e5577a453eaa44d97bfd6dcda55c5dbb39de9c",
-    "contentType": "image/png"
   },
   "0*RxiRNpyp0HKji8LN.jpg": {
     "url": "https://cdn-images-1.medium.com/max/2000/0*RxiRNpyp0HKji8LN.jpg",
@@ -157,30 +141,6 @@
     "bytes": 618198,
     "ext": "jpg",
     "sha256": "560179b9c7b90eecf757f67d76625c93195698118860da4b53379a866ec2ce16",
-    "contentType": "image/jpeg"
-  },
-  "1*YJRHmdKOtCMku5HQcArDJg.jpeg": {
-    "url": "https://cdn-images-1.medium.com/max/2000/1*YJRHmdKOtCMku5HQcArDJg.jpeg",
-    "localPath": "src/assets/posts/introducing-aquagrow-easy-to-care-indoor-plants-using-hydroculture/02-setup-with-water-level-indicator-74396db6.jpg",
-    "bytes": 339526,
-    "ext": "jpg",
-    "sha256": "c6455ced8a1e8cbf22a2c1ce999f251bef2e47f91dc244ec12336aef33aefded",
-    "contentType": "image/jpeg"
-  },
-  "1*vCPNouu3eNQYZBO2yhM4xw.jpeg": {
-    "url": "https://cdn-images-1.medium.com/max/2000/1*vCPNouu3eNQYZBO2yhM4xw.jpeg",
-    "localPath": "src/assets/posts/introducing-aquagrow-easy-to-care-indoor-plants-using-hydroculture/03-real-wood-mounted-syngonium-plant-with-key-holde-886cb3fa.jpg",
-    "bytes": 330555,
-    "ext": "jpg",
-    "sha256": "e535050ea773aacb07f12947185c65795860e7f56d924bc0c5bb4b81b4a6878f",
-    "contentType": "image/jpeg"
-  },
-  "1*gbzNMbvBmAc3ZiyF6mefKQ.jpeg": {
-    "url": "https://cdn-images-1.medium.com/max/2000/1*gbzNMbvBmAc3ZiyF6mefKQ.jpeg",
-    "localPath": "src/assets/posts/introducing-aquagrow-easy-to-care-indoor-plants-using-hydroculture/01-cup-in-cup-setup-allowing-plants-to-only-take-wa-3653bf4a.jpg",
-    "bytes": 316528,
-    "ext": "jpg",
-    "sha256": "3076169811f377f8c4df032452447eed91d5670f6b085eebd9b27405118df490",
     "contentType": "image/jpeg"
   },
   "1*wXh6I6hLByf3lvPPzrUCbw.jpeg": {

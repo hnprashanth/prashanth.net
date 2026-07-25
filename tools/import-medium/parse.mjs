@@ -1,8 +1,19 @@
 /** Medium export HTML -> classified metadata + a normalised block list. */
 import { inline, normaliseSpace } from './text.mjs';
 
-/** Slugs we deliberately drop (see tools/import-medium/README.md). */
-export const DROP_SLUGS = new Set(['5-reasons-why-i-got-hooked-on-to-cycling--repost']);
+/**
+ * Posts retired by the author as no longer relevant. Kept here rather than
+ * simply deleting the Markdown, so re-running the import cannot resurrect them.
+ */
+export const RETIRED_SLUGS = new Set([
+  'introducing-aquagrow-easy-to-care-indoor-plants-using-hydroculture',
+  'keto-triglycerides',
+  'after-all-diets-failed-one-month-into-intermittent-fasting',
+  'review-ogle-the-indian-netflix',
+  'why-i-find-uber-cab-unreliable-and-uncomfortable',
+  'simplenote-note-taking-app-that-works-for-me',
+  'idea-go-back-in-time-with-your-friends-before-you-became-friends',
+]);
 
 /** Filenames dropped as exact duplicates of another post. */
 export const DROP_FILES = new Set([

@@ -10,7 +10,7 @@ import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
 
-import { classify, extractMeta, parseBody } from './parse.mjs';
+import { classify, extractMeta, parseBody, RETIRED_SLUGS } from './parse.mjs';
 import { deriveDescription, firstSentence, normaliseSpace } from './text.mjs';
 import { ImageStore } from './images.mjs';
 
@@ -126,6 +126,10 @@ async function main() {
     }
 
     const meta = extractMeta($, verdict.canonical);
+    if (RETIRED_SLUGS.has(meta.slug)) {
+      skipped.push({ file, kind: 'retired', reason: 'retired by author' });
+      continue;
+    }
     if (ONLY && meta.slug !== ONLY) continue;
 
     const { blocks, warnings } = parseBody($, { slug: meta.slug });
