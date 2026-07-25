@@ -196,6 +196,38 @@ for (const f of html) {
 }
 assert(headProblems.length === 0, 'every page has lang, viewport, description, OG, canonical, one h1', headProblems.join('\n'));
 
+// --- canonical correctness -------------------------------------------------
+// build.format:'file' leaks .html into Astro.url.pathname. The site is served
+// extensionless and the sitemap emits the clean form, so a canonical carrying
+// .html would contradict the sitemap and point at a URL nobody links to.
+const canonicalProblems = [];
+const sitemapXml = await readFile(path.join(DIST, 'sitemap-0.xml'), 'utf8').catch(() => '');
+const sitemapLocs = new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
+
+for (const f of html) {
+  const src = await readFile(f, 'utf8');
+  const rel = path.relative(DIST, f);
+  const canon = src.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  const ogUrl = src.match(/property="og:url" content="([^"]+)"/)?.[1];
+
+  if (!canon) { canonicalProblems.push(`${rel}: no canonical`); continue; }
+  if (/\.html(?:$|[?#])/.test(canon)) canonicalProblems.push(`${rel}: canonical has .html -> ${canon}`);
+  if (canon !== ogUrl) canonicalProblems.push(`${rel}: og:url "${ogUrl}" != canonical "${canon}"`);
+
+  const expected =
+    rel === 'index.html'
+      ? 'https://prashanth.net/'
+      : `https://prashanth.net/${rel.replace(/\.html$/, '').split(path.sep).join('/')}`;
+  if (canon !== expected) canonicalProblems.push(`${rel}: canonical "${canon}" != expected "${expected}"`);
+
+  // 404 is intentionally absent from the sitemap.
+  if (rel !== '404.html') {
+    const inSitemap = sitemapLocs.has(canon) || sitemapLocs.has(canon.replace(/\/$/, ''));
+    if (!inSitemap) canonicalProblems.push(`${rel}: canonical "${canon}" not in sitemap`);
+  }
+}
+assert(canonicalProblems.length === 0, 'canonical is extensionless, matches og:url and the sitemap', canonicalProblems.join('\n'));
+
 // Posts must declare article metadata.
 const postHtml = html.filter((f) => f.includes(`${path.sep}posts${path.sep}`));
 const badArticle = postHtml.filter((f) => !/property="og:type" content="article"/.test(''));

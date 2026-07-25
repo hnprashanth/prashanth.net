@@ -11,7 +11,11 @@ interface Props {
 
 const { title, description, publishedDate, ogType = 'website' } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// build.format: 'file' puts the .html on Astro.url.pathname, but the site is
+// served extensionless and the sitemap emits the clean form. Strip it so
+// canonical, og:url and the sitemap all agree.
+const cleanPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+const canonical = new URL(cleanPath, Astro.site).href;
 const siteName = 'Prashanth HN';
 ---
 
@@ -28,7 +32,7 @@ const siteName = 'Prashanth HN';
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:locale" content="en_GB" />
+<meta property="og:locale" content="en_IN" />
 {publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
 {publishedDate && <meta property="article:author" content={siteName} />}
 
