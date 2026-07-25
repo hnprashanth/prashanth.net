@@ -8,7 +8,7 @@ export async function GET(context) {
 
   return rss({
     title: 'Prashanth HN',
-    description: 'Writing about cycling, food experiments, and building things.',
+    description: 'Writing about fitness, travel & all things tech',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
