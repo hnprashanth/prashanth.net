@@ -1,0 +1,13 @@
+{
+  "in-news": {
+    "description": "Consolidation of news articles featuring me, though they are all old.",
+    "_why": "The opening line is only the label \"Styletag Related:\", which makes a useless homepage excerpt. This sentence is the author's own, from later in the same post."
+  },
+  "idea-go-back-in-time-with-your-friends-before-you-became-friends": {
+    "description": "When I make new friends, I always wondered how many times we must have passed by each other, living in the same city, travelling in same bus.",
+    "remove": [
+      " I learned that [låna pengar](www.låna-pengar.biz) means to borrow money there, and got robbed in Sweden on traveling excursion once, rather an useful quote if you are stuck in the same situation."
+    ],
+    "_why": "Injected SEO spam (Swedish payday-loan link) carried over from the old WordPress blog; removed at the author's request. The link also lacked a URL scheme, so it would have rendered as a broken relative link."
+  }
+}

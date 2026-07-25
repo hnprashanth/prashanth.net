@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishedDate?: Date;
+  ogType?: 'website' | 'article';
+  /** The homepage prints the name as its own h1, so it skips the small nav header. */
+  showBackLink?: boolean;
+}
+
+const { title, description, publishedDate, ogType, showBackLink = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} publishedDate={publishedDate} ogType={ogType} />
+  </head>
+  <body>
+    <div class="site wrap">
+      {
+        showBackLink && (
+          <nav class="site-nav meta">
+            <a href="/">Prashanth HN</a>
+          </nav>
+        )
+      }
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

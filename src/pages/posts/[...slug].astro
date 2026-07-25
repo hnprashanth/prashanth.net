@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+
+// The filename-derived id and the frontmatter slug must not drift: the
+// collection is loaded by glob, but every URL is built from data.slug.
+if (post.id !== post.data.slug) {
+  throw new Error(`Slug mismatch: file id "${post.id}" vs frontmatter slug "${post.data.slug}"`);
+}
+
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  publishedDate={post.data.date}
+  ogType="article"
+>
+  <article>
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <FormattedDate date={post.data.date} class="meta" />
+    </header>
+    <div class="post-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

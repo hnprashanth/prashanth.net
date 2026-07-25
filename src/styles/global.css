@@ -1,0 +1,377 @@
+/* ---------------------------------------------------------------------------
+   prashanth.net — one stylesheet, no JavaScript.
+
+   Newsreader is self-hosted from @fontsource-variable, latin subset only:
+   two variable files cover 400 and 500 plus italic.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('/fonts/newsreader-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('/fonts/newsreader-latin-wght-italic.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* --- tokens ------------------------------------------------------------- */
+
+:root {
+  /* Body: 17px at 360px viewport -> 20px at 1280px, linear between.
+     slope = (20-17)/(1280-360) = 0.32609vw; intercept = 15.826px = 0.98913rem */
+  --text-body: clamp(1.0625rem, 0.98913rem + 0.32609vw, 1.25rem);
+
+  /* Everything else is a multiple of the body clamp, so the scale is
+     proportional at every width by construction. */
+  --text-meta: calc(var(--text-body) * 0.85);
+  --text-h1: calc(var(--text-body) * 1.6);
+  --text-h2: calc(var(--text-body) * 1.28);
+  --text-h3: calc(var(--text-body) * 1.12);
+  --text-mono: calc(var(--text-body) * 0.85);
+
+  --lh-body: 1.65;
+  --lh-heading: 1.25;
+  --measure: 68ch;
+
+  /* 20px at 360px -> 24px at 727px and above */
+  --pad: clamp(1.25rem, 1rem + 1.1vw, 1.5rem);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.25rem;
+  --space-5: 3.5rem;
+  --space-6: 5.5rem;
+
+  --font-body: 'Newsreader', Georgia, 'Times New Roman', Times, serif;
+  --font-meta: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Text',
+    'Segoe UI', 'Noto Sans', Roboto, 'Helvetica Neue', 'Liberation Sans', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Warm paper. Contrast against --bg: text 14.68:1, muted 5.19:1, accent 6.86:1. */
+  --bg: #faf6ef;
+  --fg: #26221c;
+  --muted: #6e675c;
+  --accent: #7a4a2b;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Contrast against --bg: text 13.33:1, muted 5.52:1, accent 6.46:1.
+       The muted tone is lightened from #6E675C, which would be 3.08:1 here
+       and fail AA for dates and captions. */
+    --bg: #1d1b17;
+    --fg: #e8e2d6;
+    --muted: #9a9182;
+    --accent: #c89468;
+
+    color-scheme: dark;
+  }
+}
+
+/* --- base --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  text-align: left;
+  hyphens: none;
+  /* Long URLs wrap instead of widening the page — without hyphenation. */
+  overflow-wrap: break-word;
+  font-synthesis-weight: none;
+}
+
+.wrap {
+  width: min(var(--measure), 100% - 2 * var(--pad));
+  margin-inline: auto;
+}
+
+/* --- typography --------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  margin: 0 0 var(--space-2);
+}
+h2 {
+  font-size: var(--text-h2);
+  margin: var(--space-5) 0 var(--space-2);
+}
+h3 {
+  font-size: var(--text-h3);
+  margin: var(--space-4) 0 var(--space-1);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-3);
+}
+
+ul,
+ol {
+  padding-left: 1.25em;
+}
+
+li {
+  margin-bottom: var(--space-1);
+}
+
+blockquote {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-2);
+  border-left: 2px solid var(--muted);
+  color: var(--muted);
+}
+
+/* The accent exists only here, on link underlines. */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 0.06em;
+}
+
+/* currentColor, not the accent, so the accent stays link-exclusive. */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.meta {
+  font-family: var(--font-meta);
+  font-size: var(--text-meta);
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  line-height: var(--lh-body);
+}
+
+/* --- media -------------------------------------------------------------- */
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: var(--space-5) 0;
+}
+
+/* Fills the column, but never scales past intrinsic size — seven of the
+   archive images are narrower than the measure, and the animated GIF is
+   only 296px wide, so width:100% would visibly blur them. */
+figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-family: var(--font-meta);
+  font-size: var(--text-meta);
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  line-height: var(--lh-body);
+  margin-top: var(--space-1);
+}
+
+/* Nothing may widen the page. */
+pre {
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: 1.5;
+  padding: var(--space-2) 0;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: var(--space-3);
+}
+
+table {
+  border-collapse: collapse;
+  font-size: var(--text-meta);
+}
+
+th,
+td {
+  text-align: left;
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+  margin: var(--space-5) 0;
+}
+
+/* --- page furniture ----------------------------------------------------- */
+
+.site {
+  padding-block: var(--space-5) var(--space-6);
+}
+
+.site-header {
+  margin-bottom: var(--space-5);
+}
+
+.site-header h1,
+.site-header p {
+  margin: 0;
+}
+
+.site-header .intro {
+  margin-top: var(--space-1);
+}
+
+.site-nav {
+  margin-bottom: var(--space-4);
+}
+
+/* Inline-flex + min-height keeps this a 44px tap target without
+   adding visible space above the title. */
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.site-footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+}
+
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Footer and nav links are tap targets too. */
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* --- post list ---------------------------------------------------------- */
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li + li {
+  border-top: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
+}
+
+/* The whole entry is the tap target, not just the title. */
+.post-list a {
+  display: block;
+  padding-block: var(--space-3);
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-list .title {
+  font-size: var(--text-h3);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  /* The underline is the link affordance; the accent belongs to links. */
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 0.06em;
+}
+
+.post-list .excerpt {
+  margin: var(--space-1) 0 0;
+  color: var(--fg);
+}
+
+/* Date sits in normal flow below the title, so a long title never truncates it. */
+.post-list time {
+  display: block;
+  margin-top: var(--space-1);
+}
+
+/* --- article ------------------------------------------------------------ */
+
+.post-header {
+  margin-bottom: var(--space-5);
+}
+
+.post-header h1 {
+  margin-bottom: var(--space-2);
+}
+
+.post-body > :first-child {
+  margin-top: 0;
+}
+
+.prose-note {
+  margin-top: var(--space-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

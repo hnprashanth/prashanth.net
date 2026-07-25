@@ -1,0 +1,21 @@
+# Medium export — contains PII (IP address history, session logs). Never commit.
+medium-export/
+medium-export.zip
+
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# misc
+.DS_Store
+*.log
+.env
+.env.production
+test-results/
+playwright-report/
+
+# regenerable audit artifacts
+tools/audit/screenshots/
