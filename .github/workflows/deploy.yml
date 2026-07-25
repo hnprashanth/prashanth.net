@@ -28,8 +28,6 @@ jobs:
 
       - run: npm ci
 
-      - uses: actions/configure-pages@v6
-
       - name: Build
         run: npm run build
 
@@ -37,6 +35,11 @@ jobs:
         # Gates the deploy on zero-JS, resolvable assets, image dimensions,
         # feed integrity and per-page metadata.
         run: npm run audit
+
+      # After the build, so build and audit results are still visible if Pages
+      # has not been enabled on the repository yet. `site` is hardcoded in
+      # astro.config.mjs, so this step configures nothing the build depends on.
+      - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
