@@ -18,12 +18,10 @@ interface Props {
 
 const { post } = Astro.props;
 
-// The filename-derived id and the frontmatter slug must not drift: the
-// collection is loaded by glob, but every URL is built from data.slug.
-if (post.id !== post.data.slug) {
-  throw new Error(`Slug mismatch: file id "${post.id}" vs frontmatter slug "${post.data.slug}"`);
-}
-
+// Note: the glob loader adopts the frontmatter `slug` as the entry id, so
+// post.id always equals post.data.slug and cannot be used to detect a filename
+// that has drifted from its slug. That convention is asserted in the audit
+// (tools/audit/static-checks.mjs) instead, where it can actually fail.
 const { Content } = await render(post);
 ---
 

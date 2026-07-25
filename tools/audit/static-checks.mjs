@@ -57,6 +57,14 @@ for (const f of postFiles) {
   const slug = f.replace(/\.md$/, '');
   const src = await readFile(path.join(CONTENT, f), 'utf8');
   const fmSlug = src.match(/^slug: "(.*)"$/m)?.[1];
+  // Astro's glob loader adopts the frontmatter slug as the entry id, so a
+  // filename that disagrees with it still builds — at the slug's URL, not the
+  // filename's. Check it here, where it can actually fail.
+  if (fmSlug !== slug) {
+    fail(`renders: ${slug}`, `filename is "${slug}.md" but frontmatter slug is "${fmSlug}" — rename the file to ${fmSlug}.md`);
+    continue;
+  }
+
   const built = path.join(DIST, 'posts', `${slug}.html`);
   if (!(await exists(built))) {
     fail(`renders: ${slug}`, 'no HTML emitted');
